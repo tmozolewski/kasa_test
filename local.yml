@@ -1,0 +1,38 @@
+- hosts: nowa
+  become: true
+
+#  vars:
+#    kasnet_ver: "2.1.339-m01"
+#    xkasnet_ver: "2.2.19"
+   
+
+  tasks:
+
+    - set_fact:
+        ansible_python_interpreter: /usr/bin/python3
+  
+    - name: Sprawdzanie systemu
+      fail: msg="System operacyjny to nie UBUNTU 22"
+      when: ansible_distribution != "Ubuntu" and ansible_distribution_major_version | int  != 22
+
+#    - name: Zmiana hostname na kasaX    
+#      hostname:
+#        name: kasaX
+
+    - import_tasks: repo.yml    
+
+    - import_tasks: pakiety.yml
+ 
+    - import_tasks: konfiguracja.yml
+    
+#    - import_tasks: sterowniki.yml
+
+    - name: Informacja
+      debug:
+        msg: "Instalacja zostala zakonczona. Komputer zostanie automatycznie zrestartowany. Prosze czekac..."
+
+    - pause:
+        seconds: 5
+
+    - name: Restart komputera
+      command: reboot

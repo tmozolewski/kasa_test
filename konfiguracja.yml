@@ -1,0 +1,100 @@
+---
+
+- name: Touch file .run-config
+  file:
+    path: /home/kasa/.run-config
+    state: touch
+
+- name: config_x
+  shell: "echo 'xfwm4' > /home/kasa/WINDOW_MANAGER"
+
+- name: chown /home/xkasnet
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: kasa
+    group: kasa
+  loop:
+    - /home/kasa
+    - /home/xkasnet
+
+- name: ModemManager disable w systemd
+  systemd:
+     name: ModemManager
+     state: stopped
+     enabled: no
+
+- name: Allow root SSH access
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#PermitRootLogin prohibit-password'
+    line: 'PermitRootLogin yes'
+
+- name: dodanie DNS /etc/systemd/resolved.conf
+  lineinfile: 
+    path: /etc/systemd/resolved.conf
+    regexp: '^#DNS='
+    line: 'DNS=8.8.8.8'
+
+- name: '/etc/default/grub - net.ifnames i biosdevname'
+  lineinfile:
+     path: /etc/default/grub
+     line: 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"'
+     regexp: '^GRUB_CMDLINE_LINUX=""'
+
+- name: Update grub
+  shell: "update-grub"
+
+- name: 'konfiguracja1 apt'
+  lineinfile:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+    line: 'APT::Periodic::Unattended-Upgrade "1";'
+    regexp: '^APT::Periodic::Unattended-Upgrade "0";'
+         
+- name: 'konfiguracja2 apt'
+  lineinfile:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+    line: 'APT::Periodic::Update-Package-Lists "1";'
+    regexp: '^APT::Periodic::Update-Package-Lists "0";'
+
+
+- name: zmiana configa openssl
+  lineinfile:
+    state: present
+    dest: /etc/ssl/openssl.cnf
+    insertafter: '#.include filename'
+    line: 'openssl_conf = default_conf'
+
+- name: zmiana configa openssl2
+  blockinfile:
+    path: /etc/ssl/openssl.cnf
+    backup: yes
+    insertafter: "CipherString = DEFAULT:@SECLEVEL=2"
+    block: |
+      [ default_conf ]
+      ssl_conf = ssl_sect
+      [ssl_sect]
+      system_default = ssl_default_sect
+      [ssl_default_sect]
+      MinProtocol = TLSv1.2
+      CipherString = DEFAULT:@SECLEVEL=0 
+
+- name: Zmiana sql-mode
+  replace:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: '^sql-mode.*'
+    replace: 'sql-mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+
+- name: Dodanie sql-mode jezeli nie ma
+  lineinfile:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    insertafter: '\[mysqld\]'
+    firstmatch: "yes"
+    line: 'sql-mode = NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+
+- command: mysql mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '';"
+
+#- command: mysql mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');"
+
+- command: mysql mysql -e "flush privileges;" 

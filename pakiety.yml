@@ -1,0 +1,70 @@
+---
+
+- name: Instaluje wersje
+  debug:
+    msg: "{{ kasnet_ver }}"
+
+- name: Wylaczenie aktualizacji apta podczas instalacji
+  systemd:
+     state: stopped
+     name: "{{ item }}"
+     enabled: no
+  loop:
+     - apt-daily.service
+     - apt-daily.timer
+     - apt-daily-upgrade.timer        
+
+- name: Usuniecie paczek gnome, kde, lightdm
+  apt:
+    name: "{{ item }}"
+    state: absent
+    force: yes
+  loop:
+    - gdm3
+    - sddm
+    - lightdm  
+    - gdm  
+
+- name: Installacja paczek
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - mariadb-server
+      - openssh-server
+      - build-essential
+      - gpm
+      - vim
+      - joe
+      - unzip
+      - zip
+      - gdb
+      - gawk
+      - lynx
+      - cups-bsd
+      - xorg
+      - ifupdown
+      - net-tools
+      - libxml2-dev
+      - libicu-dev
+      - curl
+      - setserial
+      - nmap
+      - rsh-client
+      - rdate
+      - openjdk-8-jre
+      - fonts-roboto
+      - fonts-roboto-fontface
+      - fonts-roboto-hinted
+      - fonts-roboto-unhinted
+  
+  
+- name: Installacja paczek kasy
+  apt:
+    state: present
+    update_cache: yes
+    name: 
+      - "kasnet-server-kasa-{{ kasnet_ver }}"
+      - "xkasnet-client-{{ xkasnet_ver }}"
+      - xinput-calibrator
+      - x-pos-launcher

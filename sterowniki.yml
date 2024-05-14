@@ -1,0 +1,22 @@
+---
+
+- name: Wylaczenie x-pos-launcher
+  systemd:
+     state: stopped
+     name: x-pos-launcher
+
+- command: X -configure
+  
+- command: cp /root/xorg.conf.new /usr/share/X11/xorg.conf.d/90-xorg.conf
+
+- lineinfile:
+    path: /usr/share/X11/xorg.conf.d/90-xorg.conf
+    regexp: '(\s)(Driver)(\s)(.*)'
+    insertafter: '^Section\s"Device"'
+    line: '\1Driver      "intel"'
+    backrefs: yes
+
+- lineinfile:
+    path: /usr/share/X11/xorg.conf.d/90-xorg.conf
+    insertafter: '\sDriver.*"intel"'
+    line: "\tOption      \"AccelMethod\" \"uxa\""
