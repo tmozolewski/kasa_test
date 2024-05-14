@@ -5,13 +5,13 @@
     path: /etc/apt/auth.conf.d/repo.conf
     create: yes
     block: |
-        machine http://repo.netis.pl
-        login net
-        password nEt!24git
+        machine "{{ repo_url }}"
+        login "{{ repo_login }}"
+        password "{{ repo_password }}"
 
 - name: Dodanie klucza do apta
   apt_key:
-    data: "{{ lookup('file', 'klucz/netis_key.pub') }}"
+    data: "{{ lookup('file', 'klucz/netis_repo_key.pub') }}"
     state: present
     keyring: /etc/apt/trusted.gpg.d/netis.gpg
 

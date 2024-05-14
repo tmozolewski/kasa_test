@@ -98,3 +98,7 @@
 #- command: mysql mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');"
 
 - command: mysql mysql -e "flush privileges;" 
+
+- name: Zmiana hasla
+  shell: echo root:"{{ password }}" | sudo chpasswd
+  no_log: True
