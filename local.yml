@@ -1,4 +1,4 @@
-- hosts: nowa
+- hosts: all
   become: true
 
   vars:
