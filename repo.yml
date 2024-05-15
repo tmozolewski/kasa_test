@@ -1,5 +1,7 @@
 ---
 
+#- copy: content="{{ netis_repo_key }}" dest="/tmp/netis_repo_key.pub"
+
 - name: Dodanie auth do repo
   blockinfile:
     path: /etc/apt/auth.conf.d/repo.conf
@@ -11,11 +13,12 @@
 
 - name: Dodanie klucza do apta
   apt_key:
-    data: "{{ lookup('file', 'klucz/netis_repo_key.pub') }}"
+    data: "{{ netis_repo_key }}"
+    #data: "{{ lookup('file', '/tmp/netis_repo_key.pub') }}"
     state: present
     keyring: /etc/apt/trusted.gpg.d/netis.gpg
 
 - apt_repository:
-    repo: "deb [signed-by=/etc/apt/trusted.gpg.d/netis.gpg arch=amd64] http://repo.netis.pl {{ ansible_distribution_release }} main"
+    repo: "deb [signed-by=/etc/apt/trusted.gpg.d/netis.gpg arch=amd64] {{ repo_url }} {{ ansible_distribution_release }} main"
     state: present
     filename: repo
