@@ -68,3 +68,11 @@
       - "xkasnet-client-{{ xkasnet_ver }}"
       - xinput-calibrator
       - x-pos-launcher
+
+- name: Instalacja dodatkowych pakietow kasy
+  apt:
+    state: present
+    update_cache: no
+    name: 
+      - "{{ dodatkowe_pakiety }}"
+  when: dodatkowe_pakiety is defined

@@ -1,3 +1,4 @@
 ---
 kasnet_ver: "2.1.339-m01"
 xkasnet_ver: "2.2.18"
+dodatkowe_pakiety: xkasnet-client-topaz-{{ xkasnet_ver }}
