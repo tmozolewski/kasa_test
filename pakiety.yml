@@ -12,7 +12,8 @@
   loop:
      - apt-daily.service
      - apt-daily.timer
-     - apt-daily-upgrade.timer        
+     - apt-daily-upgrade.timer
+     - unattended-upgrades.service 
 
 - name: Usuniecie paczek gnome, kde, lightdm
   apt:
