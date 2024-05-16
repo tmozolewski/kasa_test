@@ -1,7 +1,5 @@
 ---
 
-#- copy: content="{{ netis_repo_key }}" dest="/tmp/netis_repo_key.pub"
-
 - name: Dodanie auth do repo
   blockinfile:
     path: /etc/apt/auth.conf.d/repo.conf

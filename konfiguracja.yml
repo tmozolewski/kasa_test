@@ -58,7 +58,6 @@
     line: 'APT::Periodic::Update-Package-Lists "1";'
     regexp: '^APT::Periodic::Update-Package-Lists "0";'
 
-
 - name: zmiana configa openssl
   lineinfile:
     state: present
