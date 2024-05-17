@@ -2,8 +2,6 @@
   connection: local
   become: true
 
-  vars:
-
   tasks:
 
     - set_fact:
@@ -13,13 +11,11 @@
       fail: msg="System operacyjny to nie UBUNTU 22"
       when: ansible_distribution != "Ubuntu" and ansible_distribution_major_version | int != 22
 
-#    - name: Zmiana hostname na kasaX    
-#      hostname:
-#        name: kasaX
 
     - import_tasks: repo.yml    
 
     - import_tasks: pakiety.yml
+      tags: pakiety
  
     - import_tasks: konfiguracja.yml
     
