@@ -21,6 +21,7 @@
       tags: pakiety
  
     - import_tasks: konfiguracja.yml
+      tags: konfiguracja
     
 #    - import_tasks: sterowniki.yml
 
