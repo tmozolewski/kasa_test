@@ -60,17 +60,29 @@
       - fonts-roboto-unhinted
   
   
-- name: Installacja paczek kasy
+- name: Installacja paczek kasneta
   apt:
     state: present
     update_cache: yes
     name: 
       - "kasnet-server-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "kasnet-src-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "kasnet-tools-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "kasnet-libwaga-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "kasnet-config-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "kasnet-monitor-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}~{{ ansible_distribution_release }}-1"
+
+- name: Installacja paczek xkasneta
+  apt:
+    state: present
+    update_cache: yes
+    name: 
       - "xkasnet-client-{{ xkasnet_ver }}={{ xkasnet_ver }}r{{ xkasnet_rev }}~{{ ansible_distribution_release }}-1"
+      - "xkasnet-libnative-jni-{{ xkasnet_ver }}={{ xkasnet_ver }}r{{ xkasnet_rev }}~{{ ansible_distribution_release }}-1"
       - xinput-calibrator
       - x-pos-launcher
 
-- name: Instalacja dodatkowych pakietow kasy
+- name: Instalacja dodatkowych pakietow xkasneta
   apt:
     state: present
     update_cache: no
