@@ -1,5 +1,11 @@
 ---
 
+- name: Installacja xserver-xorg-video-intel
+  apt:
+    state: present
+    update_cache: no
+    name:  xserver-xorg-video-intel
+
 - name: Wylaczenie x-pos-launcher
   systemd:
      state: stopped
