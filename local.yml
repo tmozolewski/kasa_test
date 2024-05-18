@@ -23,7 +23,8 @@
     - import_tasks: konfiguracja.yml
       tags: konfiguracja
     
-#    - import_tasks: sterowniki.yml
+    - import_tasks: sterowniki.yml
+      tags: never, sterowniki
 
     - name: Informacja
       debug:
