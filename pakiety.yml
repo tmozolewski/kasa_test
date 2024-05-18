@@ -65,8 +65,8 @@
     state: present
     update_cache: yes
     name: 
-      - "kasnet-server-kasa-{{ kasnet_ver }}"
-      - "xkasnet-client-{{ xkasnet_ver }}"
+      - "kasnet-server-kasa-{{ kasnet_ver }}={{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}"
+      - "xkasnet-client-{{ xkasnet_ver }}={{ xkasnet_ver }}r{{ xkasnet_rev }}"
       - xinput-calibrator
       - x-pos-launcher
 
@@ -75,5 +75,5 @@
     state: present
     update_cache: no
     name: 
-      - "{{ dodatkowe_pakiety }}"
-  when: dodatkowe_pakiety is defined
+      - "{{ dodatkowe_pakiety_xkasnet }}-{{ xkasnet_ver }}={{ xkasnet_ver }}r{{ xkasnet_rev }}"
+  when: dodatkowe_pakiety_xkasnet is defined
