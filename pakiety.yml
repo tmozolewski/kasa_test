@@ -15,6 +15,16 @@
      - apt-daily-upgrade.timer
      - unattended-upgrades.service 
 
+- name: Usuniecie snapd-desktop-integration
+  snap:
+    name: snapd-desktop-integration
+    state: absent
+
+- name: Usuniecie snapd
+  apt:
+    state: absent
+    name: snapd
+
 - name: Usuniecie paczek gnome, kde, lightdm
   apt:
     name: "{{ item }}"
