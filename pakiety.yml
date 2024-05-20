@@ -2,7 +2,7 @@
 
 - name: Instaluje wersje
   debug:
-    msg: "{{ kasnet_ver }}"
+    msg: "{{ kasnet_ver | regex_replace('-') }}r{{ kasnet_rev }}"
 
 - name: Wylaczenie aktualizacji apta podczas instalacji
   systemd:

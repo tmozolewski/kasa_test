@@ -11,9 +11,9 @@
      state: stopped
      name: x-pos-launcher
 
-- command: X -configure
+- shell: X -configure
   
-- command: cp /root/xorg.conf.new /usr/share/X11/xorg.conf.d/90-xorg.conf
+- shell: cp /root/xorg.conf.new /usr/share/X11/xorg.conf.d/90-xorg.conf
 
 - lineinfile:
     path: /usr/share/X11/xorg.conf.d/90-xorg.conf
