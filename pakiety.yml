@@ -25,6 +25,19 @@
     state: absent
     name: snapd
 
+- name: Wylaczenie servera X-ow
+  systemd:
+     state: stopped
+     name: "{{ item }}"
+  ignore_errors: yes
+  loop:
+    - x-pos-launcher
+    - gdm3
+    - sddm
+    - lightdm  
+    - gdm
+
+
 - name: Usuniecie paczek gnome, kde, lightdm
   apt:
     name: "{{ item }}"
