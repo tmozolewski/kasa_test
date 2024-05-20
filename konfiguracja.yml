@@ -8,17 +8,6 @@
 - name: config_x
   shell: "echo 'xfwm4' > /home/kasa/WINDOW_MANAGER"
 
-- name: chown /home/xkasnet
-  file:
-    path: "{{ item }}"
-    state: directory
-    recurse: yes
-    owner: kasa
-    group: kasa
-  loop:
-    - /home/kasa
-    - /home/xkasnet
-
 - name: ModemManager disable w systemd
   systemd:
      name: ModemManager
@@ -101,3 +90,14 @@
 - name: Zmiana hasla
   shell: echo root:"{{ password }}" | sudo chpasswd
   no_log: True
+
+- name: chown /home/xkasnet
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: kasa
+    group: kasa
+  loop:
+    - /home/kasa
+    - /home/xkasnet
