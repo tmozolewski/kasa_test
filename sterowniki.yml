@@ -18,9 +18,9 @@
     - lightdm  
     - gdm
 
-#- file:
-#    path: /tmp/.X0-lock
-#    state: absent
+- file:
+    path: /tmp/.X0-lock
+    state: absent
 
 - shell: X -configure
   
