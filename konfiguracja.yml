@@ -1,5 +1,10 @@
 ---
 
+- name: Wylaczenie x-pos-launcher
+  systemd:
+     state: stopped
+     name: x-pos-launcher
+
 - name: Touch file .run-config
   file:
     path: /home/kasa/.run-config
