@@ -9,11 +9,17 @@
 - name: Wylaczenie x-pos-launcher
   systemd:
      state: stopped
-     name: x-pos-launcher
+     name: "{{ item }}"
+  loop:
+    - x-pos-launcher
+    - gdm3
+    - sddm
+    - lightdm  
+    - gdm
 
-- file:
-    path: /tmp/.X0-lock
-    state: absent
+#- file:
+#    path: /tmp/.X0-lock
+#    state: absent
 
 - shell: X -configure
   
