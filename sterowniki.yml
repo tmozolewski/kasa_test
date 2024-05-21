@@ -18,10 +18,6 @@
     - lightdm  
     - gdm
 
-- file:
-    path: /tmp/.X0-lock
-    state: absent
-
 - shell: X -configure
   
 - shell: cp /root/xorg.conf.new /usr/share/X11/xorg.conf.d/90-xorg.conf
