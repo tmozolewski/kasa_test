@@ -18,6 +18,7 @@
      name: ModemManager
      state: stopped
      enabled: no
+  ignore_errors: yes 
 
 - name: Allow root SSH access
   lineinfile: 
