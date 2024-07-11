@@ -19,11 +19,13 @@
   snap:
     name: snapd-desktop-integration
     state: absent
+  ignore_errors: yes  
 
 - name: Usuniecie snapd
   apt:
     state: absent
     name: snapd
+  ignore_errors: yes 
 
 - name: Wylaczenie servera X-ow
   systemd:
