@@ -1,0 +1,124 @@
+
+
+[auchan-kasy-test]
+auchan-s888-k1
+
+#[auchan-s662-kasy] - ??????
+
+
+[auchan-kasy-prod]
+auchan-s667-k1
+auchan-s667-k2
+auchan-s667-k3
+auchan-s669-k1
+auchan-s669-k2
+auchan-s669-k3
+auchan-s655-k1
+auchan-s655-k2
+auchan-s655-k3
+#auchan-s655-k4
+auchan-s655-k5
+auchan-s653-k1
+auchan-s653-k2
+auchan-s653-k3
+auchan-s646-k2
+auchan-s651-k1
+auchan-s651-k2
+auchan-s640-k1
+auchan-s640-k2
+auchan-s640-k3
+auchan-s658-k1
+auchan-s658-k2
+#auchan-s657-k1
+auchan-s657-k2
+auchan-s657-k3
+auchan-s657-k4
+auchan-s650-k1
+auchan-s650-k2
+auchan-s650-k3
+auchan-s650-k4
+auchan-s650-k5
+auchan-s648-k1
+auchan-s648-k2
+auchan-s648-k3
+#auchan-s648-k4
+auchan-s649-k1
+auchan-s649-k2
+auchan-s649-k3
+auchan-s645-k1
+auchan-s643-k1
+auchan-s643-k2
+auchan-s642-k1
+auchan-s642-k2
+auchan-s642-k3
+auchan-s642-k4
+auchan-s639-k1
+auchan-s639-k2
+auchan-s639-k3
+auchan-s639-k7
+auchan-s637-k1
+auchan-s637-k2
+auchan-s637-k3
+auchan-s637-k4
+#auchan-s637-k5
+auchan-s641-k1
+auchan-s641-k2
+auchan-s641-k3
+auchan-s641-k4
+auchan-s641-k5
+auchan-s638-k1
+auchan-s638-k2
+auchan-s638-k3
+auchan-s638-k4
+auchan-s638-k5
+#auchan-s638-k6
+#auchan-s638-k7
+#auchan-s638-k8
+#auchan-s631-k1
+auchan-s631-k2
+auchan-s631-k3
+#auchan-s631-k4
+auchan-s633-k1
+#auchan-s633-k2
+auchan-s633-k3
+auchan-s633-k4
+auchan-s633-k5
+auchan-s634-k1
+auchan-s634-k2
+auchan-s634-k3
+auchan-s634-k4
+auchan-s634-k5
+auchan-s634-k6
+#auchan-s634-k7
+#auchan-s634-k8
+auchan-s634-k9
+auchan-s635-k1
+auchan-s635-k2
+auchan-s635-k3
+auchan-s636-k1
+auchan-s636-k2
+auchan-s636-k3
+auchan-s636-k4
+auchan-s636-k5
+
+
+[auchan-kasy-sco-selfnet]
+auchan-s646-k3-sco-selfnet
+
+
+#[auchan-kasy-sco-wincor]
+#auchan-s640-k4-sco-wincor kasasco31
+#auchan-s640-k5-sco-wincor kasasco32
+##auchan-s642-k5-sco-wincor
+#auchan-s642-k6-sco-wincor kasasco31
+##auchan-s642-k7-sco-wincor
+#auchan-s642-k8-sco-wincor kasasco33
+#auchan-s639-k4-sco-wincor kasasco31
+#auchan-s639-k5-sco-wincor kasasco32
+#auchan-s639-k6-sco-wincor kasasco33
+#auchan-s633-k10-sco-wincor kasasco31
+#auchan-s633-k11-sco-wincor kasasco32
+#auchan-s634-k10-sco-wincor kasasco31
+#auchan-s634-k11-sco-wincor kasasco32
+
+
